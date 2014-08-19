@@ -2,9 +2,11 @@
 ## caches that value to use it again over and over without making the
 ## calculation each time.
 
-## Write a short comment describing this function
+## makeCacheMatrix will create a list of functions that will
+## be called by cacheSolve. Calling makeCacheMatrix wont call
+## any of this 3 functions.
 
-makeCacheMatrix <- function(x = matrix()) {
+makeCacheMatrix <- function(x = matrix()) {  ## Inpunt = Matrix.
         imat <- NULL
         set <- function(y) {
                 x <<- y
@@ -19,9 +21,12 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## cacheSolve accesses the object ‘x’ (Matrix) and gets the inverse using solve().
+## If inverse was already cached it sends “getting cached data" to the console and 
+## returns the inverse matrix ennding the function. However, if the inverse isn’t cached, 
+## then it calculates it and store it.
 
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(x, ...) {  ##Input = Object created with makeCacjeMatrix
                 imat <- x$getimat()
                 if(!is.null(imat)) {
                         message("getting cached data")
